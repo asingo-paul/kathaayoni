@@ -1,0 +1,64 @@
+{
+  "name": "kathaayoni-academy-website",
+  "version": "1.0.0",
+  "description": "Official website for Kathaayoni Academy - Premier educational institution in Machakos County, Kenya",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server . --port=3000 --open=/index.html",
+    "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:assets",
+    "build:html": "npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir . --output-dir build --file-ext html",
+    "build:css": "npx cleancss -o build/styles.css styles.css",
+    "build:js": "npx terser script.js -o build/script.js --compress --mangle",
+    "build:assets": "mkdir -p build && cp -r images build/ 2>/dev/null || echo 'No images directory' && find . -maxdepth 1 -name '*.ico' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.webp' | xargs -I {} cp {} build/ 2>/dev/null || echo 'No additional assets'",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "npx htmlhint '*.html' --config .htmlhintrc",
+    "lint:css": "npx stylelint '*.css' --config .stylelintrc.json",
+    "lint:js": "npx eslint '*.js' --config .eslintrc.json",
+    "test": "npm run lint && echo 'All tests passed!'",
+    "clean": "rm -rf build node_modules package-lock.json",
+    "dev": "npm start",
+    "deploy": "echo 'Deployment handled by GitHub Actions'",
+    "health-check": "curl -f https://yourusername.github.io/kathaayoni || echo 'Health check failed'",
+    "optimize-images": "find images/ -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' | while read img; do echo \"Checking $img\"; done"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/kathaayoni.git"
+  },
+  "keywords": [
+    "education",
+    "school",
+    "academy",
+    "kenya",
+    "machakos",
+    "website",
+    "responsive",
+    "static-site"
+  ],
+  "author": "Kathaayoni Academy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/kathaayoni/issues"
+  },
+  "homepage": "https://yourusername.github.io/kathaayoni",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "html-minifier-terser": "^7.2.0",
+    "htmlhint": "^1.1.4",
+    "live-server": "^1.2.2",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard": "^36.0.0",
+    "terser": "^5.27.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
