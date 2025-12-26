@@ -249,7 +249,7 @@ body {
 }
 
 .partner-item {
-    flex: 0 0 200px;
+    flex: 0 0 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -266,8 +266,8 @@ body {
 }
 
 .partner-item img {
-    width: 120px;
-    height: 60px;
+    width: 80px;
+    height: 40px;
     object-fit: contain;
     margin-bottom: 0.5rem;
     border-radius: 5px;
@@ -941,21 +941,117 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 1rem;
+    padding: 12px 16px;
+    margin-bottom: 0.5rem;
     border: 2px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 .contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form textarea:focus,
+.contact-form select:focus {
     outline: none;
     border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.contact-form select {
+    cursor: pointer;
+    background-color: var(--white);
+}
+
+.error-message {
+    display: block;
+    color: var(--negative);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    min-height: 1.2rem;
+}
+
+.checkbox-group {
+    margin: 1.5rem 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.75rem;
+    margin-top: 0.1rem;
+    transform: scale(1.2);
+}
+
+.checkmark {
+    margin-left: 0.5rem;
+}
+
+#submit-btn {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.form-footer small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Form validation states */
+.contact-form input.error,
+.contact-form textarea.error,
+.contact-form select.error {
+    border-color: var(--negative);
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+.contact-form input.success,
+.contact-form textarea.success,
+.contact-form select.success {
+    border-color: var(--positive);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Loading state */
+.contact-form.loading {
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 /* Footer */
@@ -1094,7 +1190,7 @@ body {
     }
     
     .partner-item {
-        flex: 0 0 150px;
+        flex: 0 0 120px;
     }
     
     .stats-grid {

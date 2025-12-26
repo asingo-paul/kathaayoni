@@ -51,15 +51,28 @@ jobs:
       run: |
         npx eslint "*.js" --config .eslintrc.json || echo "JavaScript linting completed"
         
-    - name: 🖼️ Image Optimization Check
+    - name: 🖼️ Image Quality Check (No Compression)
       run: |
-        echo "Checking image sizes..."
-        find images/ -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" | while read img; do
-          size=$(stat -f%z "$img" 2>/dev/null || stat -c%s "$img" 2>/dev/null || echo "0")
-          if [ "$size" -gt 1048576 ]; then # 1MB
-            echo "⚠️ Large image detected: $img ($(($size/1024))KB)"
-          fi
-        done
+        echo "📸 Checking image inventory (compression disabled)..."
+        if [ -d "images/" ]; then
+          echo "Images found in the following categories:"
+          find images/ -type d | while read dir; do
+            count=$(find "$dir" -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.svg" -o -name "*.webp" | wc -l)
+            if [ "$count" -gt 0 ]; then
+              echo "  📁 $dir: $count images"
+            fi
+          done
+          
+          echo ""
+          echo "📊 Image size summary:"
+          find images/ -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.svg" -o -name "*.webp" | while read img; do
+            size=$(stat -f%z "$img" 2>/dev/null || stat -c%s "$img" 2>/dev/null || echo "0")
+            size_mb=$(echo "scale=2; $size/1024/1024" | bc -l 2>/dev/null || echo "0")
+            echo "  📷 $(basename "$img"): ${size_mb}MB (original quality preserved)"
+          done
+        else
+          echo "No images directory found"
+        fi
         
     - name: 🔐 Security Scan
       run: |
@@ -95,7 +108,7 @@ jobs:
         npm init -y
         npm install --save-dev html-minifier-terser clean-css-cli terser imagemin-cli
         
-    - name: 🏗️ Build Optimized Assets
+    - name: 🏗️ Build Optimized Assets (Images Preserved)
       run: |
         # Create build directory
         mkdir -p build
@@ -121,11 +134,24 @@ jobs:
         # Optimize JavaScript
         npx terser script.js -o build/script.js --compress --mangle
         
-        # Copy images and other assets
+        # Copy images WITHOUT compression (preserve original quality)
+        echo "📸 Copying images without compression..."
         cp -r images build/ 2>/dev/null || echo "No images directory found"
         
-        # Copy any other static files
+        # Copy JavaScript configuration and service files
+        echo "⚙️ Copying configuration files..."
+        cp config.js build/ 2>/dev/null || echo "No config.js found"
+        cp email-service.js build/ 2>/dev/null || echo "No email-service.js found"
+        cp contact-fallback.js build/ 2>/dev/null || echo "No contact-fallback.js found"
+        
+        # Copy any other static files (preserving original quality)
+        echo "📁 Copying additional static files..."
         find . -maxdepth 1 -name "*.ico" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.svg" -o -name "*.webp" | xargs -I {} cp {} build/ 2>/dev/null || echo "No additional static files found"
+        
+        # Copy documentation files
+        cp *.md build/ 2>/dev/null || echo "No markdown files found"
+        
+        echo "✅ Build completed - Images preserved at original quality"
         
     - name: 📊 Build Report
       run: |

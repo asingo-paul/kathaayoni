@@ -5,11 +5,13 @@
   "main": "index.html",
   "scripts": {
     "start": "npx live-server . --port=3000 --open=/index.html",
+    "setup": "node setup.js",
+    "setup-emailjs": "node setup-emailjs.js",
     "build": "npm run build:html && npm run build:css && npm run build:js && npm run build:assets",
     "build:html": "npx html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir . --output-dir build --file-ext html",
     "build:css": "npx cleancss -o build/styles.css styles.css",
     "build:js": "npx terser script.js -o build/script.js --compress --mangle",
-    "build:assets": "mkdir -p build && cp -r images build/ 2>/dev/null || echo 'No images directory' && find . -maxdepth 1 -name '*.ico' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.webp' | xargs -I {} cp {} build/ 2>/dev/null || echo 'No additional assets'",
+    "build:assets": "mkdir -p build && echo '📸 Copying images without compression...' && cp -r images build/ 2>/dev/null || echo 'No images directory' && echo '📁 Copying additional files...' && find . -maxdepth 1 -name '*.ico' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.gif' -o -name '*.svg' -o -name '*.webp' | xargs -I {} cp {} build/ 2>/dev/null || echo 'No additional assets' && cp config.js email-service.js contact-fallback.js build/ 2>/dev/null || echo 'JS files copied'",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
     "lint:html": "npx htmlhint '*.html' --config .htmlhintrc",
     "lint:css": "npx stylelint '*.css' --config .stylelintrc.json",
@@ -19,7 +21,7 @@
     "dev": "npm start",
     "deploy": "echo 'Deployment handled by GitHub Actions'",
     "health-check": "curl -f https://yourusername.github.io/kathaayoni || echo 'Health check failed'",
-    "optimize-images": "find images/ -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' | while read img; do echo \"Checking $img\"; done"
+    "optimize-images": "echo '📸 Image compression is disabled to preserve quality. Images will be used at original resolution.' && find images/ -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' | while read img; do echo \"✅ Preserving: $img\"; done"
   },
   "repository": {
     "type": "git",

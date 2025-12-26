@@ -50,34 +50,285 @@ if (testimonials.length > 0) {
     setInterval(nextTestimonial, 5000);
 }
 
-// Contact Form Handling
-const contactForm = document.getElementById('contactForm');
+// EmailJS Configuration and Contact Form Handler
+(function() {
+    // Initialize EmailJS with configuration
+    if (typeof emailjs !== 'undefined' && CONFIG.emailjs.publicKey !== 'YOUR_PUBLIC_KEY') {
+        emailjs.init(CONFIG.emailjs.publicKey);
+        console.log('EmailJS initialized successfully');
+    } else {
+        console.warn('EmailJS not configured. Using fallback contact method.');
+    }
+})();
 
-contactForm.addEventListener('submit', function(e) {
+// Enhanced Contact Form Handling with EmailJS
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submit-btn');
+
+// Form validation patterns
+const validationRules = {
+    user_name: {
+        required: true,
+        minLength: 2,
+        pattern: /^[a-zA-Z\s]+$/,
+        message: 'Please enter a valid name (letters and spaces only)'
+    },
+    user_email: {
+        required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        message: 'Please enter a valid email address'
+    },
+    user_phone: {
+        required: false,
+        pattern: /^[\+]?[0-9\s\-\(\)]+$/,
+        message: 'Please enter a valid phone number'
+    },
+    message: {
+        required: true,
+        minLength: 10,
+        message: 'Please enter a message with at least 10 characters'
+    }
+};
+
+// Clear error states
+function clearErrors() {
+    document.querySelectorAll('.error-message').forEach(error => {
+        error.textContent = '';
+    });
+    document.querySelectorAll('.error').forEach(field => {
+        field.classList.remove('error', 'success');
+    });
+}
+
+// Show error for specific field
+function showError(fieldName, message) {
+    const field = document.getElementById(fieldName);
+    const errorElement = document.getElementById(fieldName.replace('user_', '') + '-error');
+    
+    if (field) {
+        field.classList.add('error');
+        field.classList.remove('success');
+    }
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+    }
+}
+
+// Show success for specific field
+function showSuccess(fieldName) {
+    const field = document.getElementById(fieldName);
+    if (field) {
+        field.classList.add('success');
+        field.classList.remove('error');
+    }
+}
+
+// Validate single field
+function validateField(fieldName, value) {
+    const rules = validationRules[fieldName];
+    if (!rules) return true;
+    
+    // Check required
+    if (rules.required && (!value || value.trim() === '')) {
+        showError(fieldName, `${fieldName.replace('user_', '').replace('_', ' ')} is required`);
+        return false;
+    }
+    
+    // Skip other validations if field is empty and not required
+    if (!rules.required && (!value || value.trim() === '')) {
+        showSuccess(fieldName);
+        return true;
+    }
+    
+    // Check minimum length
+    if (rules.minLength && value.length < rules.minLength) {
+        showError(fieldName, `Minimum ${rules.minLength} characters required`);
+        return false;
+    }
+    
+    // Check pattern
+    if (rules.pattern && !rules.pattern.test(value)) {
+        showError(fieldName, rules.message);
+        return false;
+    }
+    
+    showSuccess(fieldName);
+    return true;
+}
+
+// Validate entire form
+function validateForm() {
+    clearErrors();
+    let isValid = true;
+    
+    // Validate each field
+    Object.keys(validationRules).forEach(fieldName => {
+        const field = document.getElementById(fieldName);
+        if (field) {
+            const value = field.value.trim();
+            if (!validateField(fieldName, value)) {
+                isValid = false;
+            }
+        }
+    });
+    
+    return isValid;
+}
+
+// Set loading state
+function setLoadingState(loading) {
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    if (loading) {
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline-flex';
+        contactForm.classList.add('loading');
+    } else {
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        contactForm.classList.remove('loading');
+    }
+}
+
+// Send email using EmailJS
+async function sendEmail(formData) {
+    try {
+        // Prepare template parameters
+        const templateParams = {
+            from_name: formData.user_name,
+            from_email: formData.user_email,
+            phone: formData.user_phone || 'Not provided',
+            inquiry_type: formData.inquiry_type || 'General Inquiry',
+            message: formData.message,
+            newsletter: formData.newsletter ? 'Yes' : 'No',
+            to_email: CONFIG.school.email, // School email from config
+            reply_to: formData.user_email,
+            timestamp: new Date().toLocaleString()
+        };
+        
+        // Send email using EmailJS with configuration
+        const response = await emailjs.send(
+            CONFIG.emailjs.serviceId,
+            CONFIG.emailjs.templateId,
+            templateParams
+        );
+        
+        console.log('Email sent successfully:', response);
+        return { success: true, response };
+        
+    } catch (error) {
+        console.error('Email sending failed:', error);
+        return { success: false, error };
+    }
+}
+
+// Handle form submission with enhanced email service
+contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = contactForm.querySelector('input[type="text"]').value;
-    const email = contactForm.querySelector('input[type="email"]').value;
-    const message = contactForm.querySelector('textarea').value;
-    
-    // Simple validation
-    if (!name || !email || !message) {
-        alert('Please fill in all fields.');
+    // Check rate limiting
+    const rateLimitCheck = emailService.checkRateLimit();
+    if (!rateLimitCheck.allowed) {
+        showNotification(rateLimitCheck.message, 'error');
         return;
     }
     
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
+    // Validate form
+    if (!validateForm()) {
+        showNotification('Please correct the errors above and try again.', 'error');
         return;
     }
     
-    // Simulate form submission
-    alert('Thank you for your message! We will get back to you soon.');
-    contactForm.reset();
+    // Set loading state
+    setLoadingState(true);
+    
+    try {
+        // Collect form data
+        const formData = {
+            user_name: document.getElementById('user_name').value.trim(),
+            user_email: document.getElementById('user_email').value.trim(),
+            user_phone: document.getElementById('user_phone').value.trim(),
+            inquiry_type: document.getElementById('inquiry_type').value,
+            message: document.getElementById('message').value.trim(),
+            newsletter: document.getElementById('newsletter').checked
+        };
+        
+        // Send email using email service
+        const result = await emailService.send(formData);
+        
+        if (result.success) {
+            if (result.method === 'emailjs') {
+                // EmailJS success
+                showNotification(
+                    `✅ Thank you ${formData.user_name}! Your message has been sent successfully. We'll respond within ${CONFIG.contact.responseTime}.`,
+                    'success'
+                );
+                
+                // Reset form
+                contactForm.reset();
+                clearErrors();
+                
+                // Track successful submission
+                if (CONFIG.analytics.enableTracking && typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        event_category: 'Contact',
+                        event_label: formData.inquiry_type || 'General',
+                        method: 'emailjs'
+                    });
+                }
+                
+            } else if (result.method === 'mailto') {
+                // Mailto fallback
+                showContactOptions(result.mailtoLink, formData);
+            }
+            
+        } else {
+            throw new Error('Email service failed');
+        }
+        
+    } catch (error) {
+        console.error('Form submission error:', error);
+        
+        // Show error with fallback options
+        const errorMessage = `
+            <div>
+                <p><strong>Sorry, there was an error sending your message automatically.</strong></p>
+                <p>Please try one of these alternatives:</p>
+                <ul style="text-align: left; margin: 10px 0;">
+                    <li>📧 Email us directly: <a href="mailto:${CONFIG.school.email}" style="color: white; text-decoration: underline;">${CONFIG.school.email}</a></li>
+                    <li>📞 Call us: <a href="tel:${CONFIG.school.phone}" style="color: white; text-decoration: underline;">${CONFIG.school.phone}</a></li>
+                    <li>🔄 Try submitting the form again in a few minutes</li>
+                </ul>
+            </div>
+        `;
+        
+        showNotification(errorMessage, 'error');
+        
+    } finally {
+        setLoadingState(false);
+    }
+});
+
+// Real-time validation
+document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select').forEach(field => {
+    field.addEventListener('blur', function() {
+        if (this.value.trim() !== '') {
+            validateField(this.name, this.value.trim());
+        }
+    });
+    
+    field.addEventListener('input', function() {
+        // Clear error state on input
+        this.classList.remove('error');
+        const errorElement = document.getElementById(this.name.replace('user_', '') + '-error');
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+    });
 });
 
 // Scroll animations
