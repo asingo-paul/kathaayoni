@@ -32,3 +32,4 @@ jobs:
         run: |
           echo "## 🏥 Health Check Passed" >> $GITHUB_STEP_SUMMARY
           echo "🌍 Site reachable and responsive" >> $GITHUB_STEP_SUMMARY
+          echo "ALL DONE!!!"
