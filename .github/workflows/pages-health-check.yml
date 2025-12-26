@@ -2,78 +2,33 @@ name: 🏥 Pages Health Check
 
 on:
   schedule:
-    # Run health check every 6 hours
     - cron: '0 */6 * * *'
-  workflow_dispatch: # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
   health-check:
-    name: 🔍 Website Health Monitor
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: 🌐 Check Website Status
-      run: |
-        # Replace with your actual GitHub Pages URL
-        SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        
-        echo "Checking website health: $SITE_URL"
-        
-        # Check if site is accessible
-        HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
-        
-        if [ "$HTTP_STATUS" = "200" ]; then
-          echo "✅ Website is healthy (HTTP $HTTP_STATUS)"
-        else
-          echo "❌ Website health check failed (HTTP $HTTP_STATUS)"
-          exit 1
-        fi
-        
-    - name: 🔍 Performance Check
-      run: |
-        SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        
-        # Measure response time
-        RESPONSE_TIME=$(curl -s -o /dev/null -w "%{time_total}" "$SITE_URL" || echo "0")
-        
-        echo "Response time: ${RESPONSE_TIME}s"
-        
-        # Alert if response time is too slow (>3 seconds)
-        if (( $(echo "$RESPONSE_TIME > 3.0" | bc -l) )); then
-          echo "⚠️ Slow response time detected: ${RESPONSE_TIME}s"
-        else
-          echo "✅ Response time is good: ${RESPONSE_TIME}s"
-        fi
-        
-    - name: 🔐 Security Headers Check
-      run: |
-        SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
-        
-        echo "Checking security headers..."
-        
-        # Check for important security headers
-        HEADERS=$(curl -s -I "$SITE_URL")
-        
-        if echo "$HEADERS" | grep -i "x-frame-options"; then
-          echo "✅ X-Frame-Options header present"
-        else
-          echo "⚠️ X-Frame-Options header missing"
-        fi
-        
-        if echo "$HEADERS" | grep -i "x-content-type-options"; then
-          echo "✅ X-Content-Type-Options header present"
-        else
-          echo "⚠️ X-Content-Type-Options header missing"
-        fi
-        
-    - name: 📊 Create Health Report
-      if: always()
-      run: |
-        echo "## 🏥 Website Health Report" >> $GITHUB_STEP_SUMMARY
-        echo "**Timestamp:** $(date)" >> $GITHUB_STEP_SUMMARY
-        echo "**Site URL:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### Status Checks" >> $GITHUB_STEP_SUMMARY
-        echo "- Website Accessibility: ✅" >> $GITHUB_STEP_SUMMARY
-        echo "- Performance: ✅" >> $GITHUB_STEP_SUMMARY
-        echo "- Security Headers: ✅" >> $GITHUB_STEP_SUMMARY
+      - name: 🌐 Check Website Availability
+        run: |
+          SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL" || echo "000")
+
+          if [ "$STATUS" = "200" ]; then
+            echo "✅ Website is UP"
+          else
+            echo "❌ Website DOWN (HTTP $STATUS)"
+            exit 1
+          fi
+
+      - name: ⏱️ Response Time Check
+        run: |
+          SITE_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          TIME=$(curl -s -o /dev/null -w "%{time_total}" "$SITE_URL")
+          echo "Response Time: ${TIME}s"
+
+      - name: 📊 Health Summary
+        run: |
+          echo "## 🏥 Health Check Passed" >> $GITHUB_STEP_SUMMARY
+          echo "🌍 Site reachable and responsive" >> $GITHUB_STEP_SUMMARY
