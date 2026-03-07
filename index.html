@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kathaayoni Academy Junior School – Arise & Shine</title>
+  <meta name="description" content="Kathaayoni Academy Junior School – A premier CBC junior school offering holistic education in Grades 7–9. Nurturing excellence, character and innovation." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <style>
+    .hero-scroll{position:absolute;bottom:24px;right:28px;z-index:10;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;letter-spacing:1px;animation:bounce 2s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .why-card{background:white;border-radius:16px;padding:30px 22px;text-align:center;border:1.5px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);transition:var(--transition)}
+    .why-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:var(--shadow)}
+    .why-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(26,92,58,.1),rgba(26,92,58,.18));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
+    .why-card h3{font-family:var(--font-head);font-size:1rem;color:var(--dark);font-weight:700;margin-bottom:8px}
+    .why-card p{color:var(--gray);font-size:13px;line-height:1.6}
+    @media(max-width:768px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.why-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <div class="top-bar-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        info@kathaayoniacademy.ac.ke
+      </div>
+      <div class="top-bar-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Machakos Town, Kenya
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <a href="pages/jobs.html">Jobs</a>
+      <a href="pages/newsletter.html">Newsletter</a>
+      <a href="tel:+254700000000">📞 +254 700 000 000</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">KA</div>
+        <div class="logo-text">
+          <div class="school-name">Kathaayoni Academy</div>
+          <div class="school-tagline">Junior School · Arise &amp; Shine</div>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item has-dropdown">
+          <a class="nav-link" href="pages/about.html">About Us</a>
+          <ul class="dropdown">
+            <li><a href="pages/about.html">The School</a></li>
+            <li><a href="pages/junior-school.html">Junior School</a></li>
+            <li><a href="pages/academics.html">Academics</a></li>
+            <li><a href="pages/ict.html">ICT</a></li>
+            <li><a href="pages/science.html">Science</a></li>
+            <li><a href="pages/sports.html">Sports</a></li>
+            <li><a href="pages/clubs.html">Clubs &amp; Societies</a></li>
+            <li><a href="pages/faith.html">Faith &amp; Religion</a></li>
+            <li><a href="pages/counseling.html">Guidance &amp; Counseling</a></li>
+            <li><a href="pages/management.html">Management</a></li>
+            <li><a href="pages/achievers.html">Achievers Zone</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="pages/curriculum.html">Curriculum</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/news.html">Our News</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-btn" href="pages/contact.html#inquiry">Enroll Now</a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO SLIDER -->
+<section class="hero">
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1400&q=80');"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;width:100%;">
+      <div class="slide-content">
+        <span class="slide-badge">Welcome to Kathaayoni Academy</span>
+        <h1>Arise &amp; Shine – Step into the Light</h1>
+        <p>A premier CBC junior school where excellence, character, and innovation are nurtured in every learner in Grades 7 to 9.</p>
+        <div class="slide-btns">
+          <a href="pages/about.html" class="btn btn-white">Discover More</a>
+          <a href="pages/contact.html#inquiry" class="btn btn-accent">Inquiry Form</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 2 -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80');"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;width:100%;">
+      <div class="slide-content">
+        <span class="slide-badge">Junior School · Grades 7 – 9</span>
+        <h1>Building Tomorrow's Leaders Today</h1>
+        <p>Our junior school programme offers a solid academic foundation through CBC, developing critical thinkers and compassionate citizens.</p>
+        <div class="slide-btns">
+          <a href="pages/junior-school.html" class="btn btn-white">Junior School</a>
+          <a href="pages/contact.html#inquiry" class="btn btn-accent">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 3 -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1400&q=80');"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;width:100%;">
+      <div class="slide-content">
+        <span class="slide-badge">Academics &amp; Excellence</span>
+        <h1>Academics Play a Crucial Role in Development</h1>
+        <p>Through rigorous academics and hands-on learning, we prepare students for success in their secondary education and beyond.</p>
+        <div class="slide-btns">
+          <a href="pages/academics.html" class="btn btn-white">Academics</a>
+          <a href="pages/contact.html#inquiry" class="btn btn-accent">Inquiry Form</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 4 -->
+  <div class="slide">
+    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=1400&q=80');"></div>
+    <div class="slide-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;width:100%;">
+      <div class="slide-content">
+        <span class="slide-badge">Holistic Development</span>
+        <h1>Nurturing the Whole Child in Every Way</h1>
+        <p>We support students academically, personally, emotionally, and spiritually – giving them the tools to thrive in all areas of life.</p>
+        <div class="slide-btns">
+          <a href="pages/counseling.html" class="btn btn-white">Learn More</a>
+          <a href="pages/contact.html#inquiry" class="btn btn-accent">Join Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="slide-arrow prev">&#8592;</button>
+  <button class="slide-arrow next">&#8594;</button>
+  <div class="slide-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="hero-scroll">SCROLL ↓</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" data-target="500" data-suffix="+">500+</div>
+        <div class="stat-label">Enrolled Students</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="45" data-suffix="+">45+</div>
+        <div class="stat-label">Qualified Teachers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="12" data-suffix="">12</div>
+        <div class="stat-label">Extra-Curricular Clubs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="98" data-suffix="%">98%</div>
+        <div class="stat-label">Student Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80" alt="Students at Kathaayoni Academy" />
+        <img class="about-img-second" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=80" alt="Classroom learning" />
+        <div class="about-badge">
+          <div class="num">10+</div>
+          <div class="text">Years of<br>Excellence</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="section-tag">About Us</span>
+        <h2>We Provide Quality CBC Junior School Education</h2>
+        <p>Kathaayoni Academy Junior School is a mixed-day and boarding school offering Competency-Based Curriculum (CBC) education for Grades 7 to 9. Located in the heart of Nairobi, we are committed to nurturing academically excellent, morally upright, and socially responsible young people.</p>
+        <p>Our school blends rigorous academics with sports, arts, ICT, spiritual formation, and counseling to ensure every learner reaches their full potential.</p>
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">📚</div>
+            <div class="feature-text">
+              <strong>CBC-Aligned Curriculum</strong>
+              <span>Fully aligned with Kenya's Competency-Based Curriculum for Grades 7–9</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-text">
+              <strong>Award-Winning Programme</strong>
+              <span>Consistently recognised for academic and co-curricular excellence</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🌿</div>
+            <div class="feature-text">
+              <strong>Holistic Development</strong>
+              <span>Sports, arts, ICT, counseling and spiritual formation for every student</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-btns">
+          <a href="pages/contact.html#inquiry" class="btn btn-primary">Inquiry Form</a>
+          <a href="pages/about.html" class="btn btn-outline">View More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">The Kathaayoni Advantage</h2>
+      <p class="section-sub">We go beyond academics to shape well-rounded individuals ready for the future.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎓</div>
+        <h3>Experienced Educators</h3>
+        <p>Our teachers are qualified, passionate and committed to each student's unique learning journey.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💻</div>
+        <h3>Modern ICT Labs</h3>
+        <p>State-of-the-art computer labs with internet access prepare students for the digital era.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚽</div>
+        <h3>Rich Sports Programme</h3>
+        <p>Football, basketball, athletics, volleyball and more – building teamwork and physical fitness.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🙏</div>
+        <h3>Faith & Values</h3>
+        <p>We nurture faith, integrity and compassion as the bedrock of character formation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES / PROGRAMMES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Programmes</span>
+      <h2 class="section-title">Everything We Offer</h2>
+      <p class="section-sub">A comprehensive range of academic and co-curricular programmes designed for holistic growth.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="activities-grid">
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80" alt="Junior School" />
+          <span class="card-label">Grades 7–9</span>
+        </div>
+        <div class="card-body">
+          <h3>Junior School</h3>
+          <p>Our CBC junior school programme offers a solid academic foundation in English, Mathematics, Science, Kiswahili, Social Studies and more for Grades 7 to 9.</p>
+          <a class="card-link" href="pages/junior-school.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=500&q=80" alt="Academics" />
+          <span class="card-label">Academics</span>
+        </div>
+        <div class="card-body">
+          <h3>Academics</h3>
+          <p>Academics play a crucial role in development. We encourage critical thinking, problem-solving, and analytical skills through interactive and learner-centered methods.</p>
+          <a class="card-link" href="pages/academics.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" alt="ICT" />
+          <span class="card-label">Technology</span>
+        </div>
+        <div class="card-body">
+          <h3>ICT</h3>
+          <p>Studying technology equips pupils with essential skills for the digital age, preparing them to be informed, responsible, and innovative contributors to society.</p>
+          <a class="card-link" href="pages/ict.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1532094349884-543559b10c35?w=500&q=80" alt="Science" />
+          <span class="card-label">STEM</span>
+        </div>
+        <div class="card-body">
+          <h3>Science</h3>
+          <p>Science is fundamental to intellectual growth and problem-solving. We empower students to make sense of the world and address complex challenges facing humanity.</p>
+          <a class="card-link" href="pages/science.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=500&q=80" alt="Sports" />
+          <span class="card-label">Sports</span>
+        </div>
+        <div class="card-body">
+          <h3>Sports</h3>
+          <p>Through sports, students develop physical fitness, essential life skills, social connections and values that contribute to personal growth and academic success.</p>
+          <a class="card-link" href="pages/sports.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&q=80" alt="Clubs" />
+          <span class="card-label">Co-curricular</span>
+        </div>
+        <div class="card-body">
+          <h3>Clubs &amp; Societies</h3>
+          <p>Clubs and societies offer students diverse experiences for personal and academic growth, complementing formal education and building social and professional networks.</p>
+          <a class="card-link" href="pages/clubs.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1593672715438-d88a70629abe?w=500&q=80" alt="Faith" />
+          <span class="card-label">Spiritual</span>
+        </div>
+        <div class="card-body">
+          <h3>Faith &amp; Religion</h3>
+          <p>Our faith programme nurtures students' spiritual development, deepens their relationship with God, and helps them grow in humility, integrity and kindness.</p>
+          <a class="card-link" href="pages/faith.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1607453998774-d533f65dac99?w=500&q=80" alt="Counseling" />
+          <span class="card-label">Wellbeing</span>
+        </div>
+        <div class="card-body">
+          <h3>Guidance &amp; Counseling</h3>
+          <p>Our counseling department promotes holistic development, providing support in academic, personal, emotional, and career-related areas for every student.</p>
+          <a class="card-link" href="pages/counseling.html">View More →</a>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=500&q=80" alt="Agriculture" />
+          <span class="card-label">Practical</span>
+        </div>
+        <div class="card-body">
+          <h3>Agriculture</h3>
+          <p>Agriculture education equips pupils with practical skills, encourages responsibility, and provides insights into the food system, environment, and global economy.</p>
+          <a class="card-link" href="pages/agriculture.html">View More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Make Your Inquiry Today</h2>
+      <p>Don't miss out on the opportunity to be part of our exceptional educational family. Enroll your child at Kathaayoni Academy Junior School.</p>
+      <div class="cta-btns">
+        <a href="pages/contact.html#inquiry" class="btn btn-white">Inquiry Form</a>
+        <a href="pages/contact.html" class="btn btn-accent">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Success Stories</span>
+      <h2 class="section-title">What Our Community Says</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p>As an alumni of Kathaayoni Academy, I can confidently say that this institution played a fundamental role in shaping my educational foundation. The dedicated teachers and supportive staff shaped who I am today.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JK</div>
+          <div>
+            <div class="author-name">James Kamau</div>
+            <div class="author-role">Alumni · Form 4 Graduate</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p>The dedication of the teachers and staff at Kathaayoni Academy is truly remarkable. They go above and beyond to create a nurturing and stimulating environment where our child feels inspired to learn every day.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">NW</div>
+          <div>
+            <div class="author-name">Njeri Wambui</div>
+            <div class="author-role">Parent · Grade 8 Student</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-icon">"</div>
+        <p>I am grateful for the solid educational foundation I received at Kathaayoni Academy. The values, discipline and academic skills I gained here have continued to benefit me throughout my career.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CM</div>
+          <div>
+            <div class="author-name">Caroline Muthoni</div>
+            <div class="author-role">Alumni · University Student</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Latest Updates</span>
+      <h2 class="section-title">Our News</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=80" alt="Grade 7 Prayer Day" />
+          <div class="news-date">25<br>Oct</div>
+        </div>
+        <div class="news-body">
+          <span class="news-category">School Events</span>
+          <h3>Kathaayoni Academy Grade 7 Prayer Day 2024</h3>
+          <p>Students, staff and parents gathered for a powerful day of prayer and reflection as Grade 7 learners prepared for their end-of-year assessments.</p>
+          <a class="news-link" href="pages/news.html">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://images.unsplash.com/photo-1627556592933-13e99b168a6b?w=500&q=80" alt="Graduation" />
+          <div class="news-date">25<br>Oct</div>
+        </div>
+        <div class="news-body">
+          <span class="news-category">Ceremonies</span>
+          <h3>Grade 9 Completion Ceremony 2024</h3>
+          <p>We celebrated the achievements of our Grade 9 cohort in a colourful ceremony attended by families, educators and local dignitaries.</p>
+          <a class="news-link" href="pages/news.html">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&q=80" alt="County Visit" />
+          <div class="news-date">25<br>Jul</div>
+        </div>
+        <div class="news-body">
+          <span class="news-category">Community</span>
+          <h3>County Education Director's School Visit</h3>
+          <p>The County Director of Education paid an inspiring visit to our school, commending our facilities and the outstanding performance of our learners.</p>
+          <a class="news-link" href="pages/news.html">Read More →</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="pages/news.html" class="btn btn-outline">View All News</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-tag">Get in Touch</span>
+        <h2>Kathaayoni Academy Junior School</h2>
+        <p>We'd love to hear from you. Reach out to us for admissions, enquiries or to arrange a school visit.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Location</strong>
+              <span>Machakos Town, Kitui Road, Kenya</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:+254700000000">+254 700 000 000</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:info@kathaayoniacademy.ac.ke">info@kathaayoniacademy.ac.ke</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong>Office Hours</strong>
+              <div class="contact-hours">
+                <span>Mon–Fri: 7:00am – 5:00pm</span>
+                <span>Sat: 8:00am – 12:00pm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-box">
+        <h3>Quick Inquiry</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" required placeholder="e.g. John" /></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" required placeholder="e.g. Kamau" /></div>
+          </div>
+          <div class="form-group"><label>Email *</label><input type="email" required placeholder="your@email.com" /></div>
+          <div class="form-group"><label>Phone *</label><input type="tel" required placeholder="+254 7XX XXX XXX" /></div>
+          <div class="form-group">
+            <label>Inquiry Type *</label>
+            <select>
+              <option>Admissions / Enrollment</option>
+              <option>Fees Structure</option>
+              <option>Boarding Requirements</option>
+              <option>School Calendar</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea rows="3" placeholder="How can we help you?"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon">KA</div>
+            <div>
+              <div class="footer-logo-text">Kathaayoni Academy</div>
+              <div class="footer-logo-sub">Junior School</div>
+            </div>
+          </div>
+          <p class="footer-desc">We are a mixed Day and Boarding Junior School offering CBC education for Grades 7–9. Committed to excellence in academics, character, and holistic development.</p>
+          <div class="footer-socials">
+            <a class="social-btn" href="#">f</a>
+            <a class="social-btn" href="#">t</a>
+            <a class="social-btn" href="#">in</a>
+            <a class="social-btn" href="#">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pages/about.html">About Us</a>
+            <a href="pages/junior-school.html">Junior School</a>
+            <a href="pages/curriculum.html">Curriculum</a>
+            <a href="pages/events.html">Events</a>
+            <a href="pages/gallery.html">Gallery</a>
+            <a href="pages/contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Programmes</h4>
+          <div class="footer-links">
+            <a href="pages/academics.html">Academics</a>
+            <a href="pages/ict.html">ICT</a>
+            <a href="pages/science.html">Science</a>
+            <a href="pages/sports.html">Sports</a>
+            <a href="pages/clubs.html">Clubs &amp; Societies</a>
+            <a href="pages/faith.html">Faith &amp; Religion</a>
+            <a href="pages/counseling.html">Guidance &amp; Counseling</a>
+            <a href="pages/agriculture.html">Agriculture</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <div class="footer-links" style="gap:14px">
+            <span style="color:rgba(255,255,255,.7);font-size:13.5px">📍 Machakos Town, Kitui Road</span>
+            <a href="mailto:info@kathaayoniacademy.ac.ke">✉️ info@kathaayoniacademy.ac.ke</a>
+            <a href="tel:+254700000000">📞 +254 700 000 000</a>
+          </div>
+          <div class="footer-newsletter">
+            <p style="font-size:13px;color:rgba(255,255,255,.7);margin-top:18px;margin-bottom:6px;">Subscribe to our newsletter</p>
+            <div class="newsletter-form">
+              <input type="email" placeholder="Your email" />
+              <button class="newsletter-btn">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <span>© 2026 Kathaayoni Academy Junior School. All rights reserved.</span>
+        <span>Developed by Asingo Paul - 0717473314 : paulasingo32@gmail.com</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
