@@ -54,8 +54,9 @@ ul { list-style: none; }
 
 /* ===== TOP BAR ===== */
 .top-bar {
-  background: var(--primary-dark);
-  color: rgba(255,255,255,0.85);
+  /* background: var(--primary-dark); */
+  background: var(--accent);
+  color: rgba(246, 246, 248, 0.85);
   font-size: 13px;
   padding: 8px 0;
   font-family: var(--font-body);
