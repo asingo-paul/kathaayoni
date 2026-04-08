@@ -11,7 +11,7 @@
 <div id="nav-placeholder"></div>
 
 <section class="page-hero">
-  <div style="position:absolute;inset:0;background:url('../photos/DSC_0021s.JPG (1).jpeg') center/cover;opacity:.13;"></div>
+  <div style="position:absolute;inset:0;background:url('../photos/DSC_0021s.JPG.webp') center/cover;opacity:.13;" onerror="this.style.backgroundImage='url(../photos/DSC_0021s.JPG (1).jpeg)'"></div>
   <div class="container page-hero-content">
     <h1>Guidance & Counseling</h1>
     <div class="breadcrumb">
@@ -27,9 +27,17 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-images">
-        <img class="about-img-main" src="../photos/DSC_0021s.JPG (1).jpeg" alt="Counseling"/>
-        <img class="about-img-second" src="../photos/DSC_0021s.JPG.jpeg" alt="Support"/>
-        <div class="about-badge"><div class="num">💚</div><div class="text">Student<br>Wellbeing</div></div>
+        <picture>
+          <source srcset="../photos/DSC_0021s.JPG (1).webp" type="image/webp" />
+          <img class="about-img-main" src="../photos/DSC_0021s.JPG (1).jpeg" alt="Counseling" loading="lazy" />
+        </picture>
+        <picture>
+          <source srcset="../photos/DSC_0021s.JPG.webp" type="image/webp" />
+          <img class="about-img-second" src="../photos/DSC_0021s.JPG.jpeg" alt="Support" loading="lazy" />
+        </picture>
+        <div class="about-badge"><div class="num">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div><div class="text">Student<br>Wellbeing</div></div>
       </div>
       <div class="about-content">
         <span class="section-tag">Guidance &amp; Counseling</span>
@@ -37,9 +45,18 @@
         <p>The Guidance and Counseling department at Kathaayoni Academy is vital for promoting the holistic development and well-being of students. It provides valuable support in academic, personal, emotional, and career-related areas, helping students overcome challenges and reach their full potential.</p>
         <p>Our team of trained counselors offers both individual and group counseling sessions, career guidance, and life skills training to prepare students for life beyond school.</p>
         <div class="about-features">
-          <div class="feature-item"><div class="feature-icon">🧠</div><div class="feature-text"><strong>Mental Health Support</strong><span>Confidential counseling to help students manage stress, anxiety, and personal challenges</span></div></div>
-          <div class="feature-item"><div class="feature-icon">🎯</div><div class="feature-text"><strong>Career Guidance</strong><span>Career talks, aptitude assessments and pathway planning for post-junior secondary</span></div></div>
-          <div class="feature-item"><div class="feature-icon">👨‍👩‍👧</div><div class="feature-text"><strong>Parent Engagement</strong><span>Regular parent-counselor meetings to support student development collaboratively</span></div></div>
+          <div class="feature-item">
+            <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <div class="feature-text"><strong>Mental Health Support</strong><span>Confidential counseling to help students manage stress, anxiety, and personal challenges</span></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="feature-text"><strong>Career Guidance</strong><span>Career talks, aptitude assessments and pathway planning for post-junior secondary</span></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="feature-text"><strong>Parent Engagement</strong><span>Regular parent-counselor meetings to support student development collaboratively</span></div>
+          </div>
         </div>
         <a href="contact.html" class="btn btn-primary">Reach Out</a>
       </div>

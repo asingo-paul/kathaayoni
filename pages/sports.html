@@ -11,7 +11,7 @@
 <div id="nav-placeholder"></div>
 
 <section class="page-hero">
-  <div style="position:absolute;inset:0;background:url('../photos/DSC_0038.JPG.jpeg') center/cover;opacity:.13;"></div>
+  <div style="position:absolute;inset:0;background:url('../photos/DSC_0038.JPG.webp') center/cover;opacity:.13;" onerror="this.style.backgroundImage='url(../photos/DSC_0038.JPG.jpeg)'"></div>
   <div class="container page-hero-content">
     <h1>Sports</h1>
     <div class="breadcrumb">
@@ -27,9 +27,17 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-images">
-        <img class="about-img-main" src="../photos/DSC_0004h.JPG.jpeg" alt="Sports"/>
-        <img class="about-img-second" src="../photos/DSC_0001w.JPG.jpeg" alt="Athletics"/>
-        <div class="about-badge"><div class="num">⚽</div><div class="text">Active<br>School</div></div>
+        <picture>
+          <source srcset="../photos/DSC_0004h.JPG.webp" type="image/webp" />
+          <img class="about-img-main" src="../photos/DSC_0004h.JPG.jpeg" alt="Sports" loading="lazy" />
+        </picture>
+        <picture>
+          <source srcset="../photos/DSC_0001w.JPG.webp" type="image/webp" />
+          <img class="about-img-second" src="../photos/DSC_0001w.JPG.jpeg" alt="Athletics" loading="lazy" />
+        </picture>
+        <div class="about-badge"><div class="num">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div><div class="text">Active<br>School</div></div>
       </div>
       <div class="about-content">
         <span class="section-tag">Sports</span>
@@ -37,9 +45,24 @@
         <p>Through sports, students develop physical fitness, essential life skills, social connections, and values that contribute to their personal growth and success in various aspects of life, including academics and future careers.</p>
         <p>We offer a wide range of sports including football, basketball, volleyball, athletics, swimming, handball, and netball. Our qualified PE teachers and coaches ensure every student is engaged and challenged.</p>
         <div class="about-features">
-          <div class="feature-item"><div class="feature-icon">🏃</div><div class="feature-text"><strong>Athletics Programme</strong><span>Track and field events, cross-country, and multi-sport competitions for all levels</span></div></div>
-          <div class="feature-item"><div class="feature-icon">🤝</div><div class="feature-text"><strong>Team Sports</strong><span>Football, volleyball, basketball, handball and netball teams for boys and girls</span></div></div>
-          <div class="feature-item"><div class="feature-icon">🥇</div><div class="feature-text"><strong>Inter-School Competitions</strong><span>Regular participation in zone, county, regional and national sports competitions</span></div></div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="feature-text"><strong>Athletics Programme</strong><span>Track and field events, cross-country, and multi-sport competitions for all levels</span></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="feature-text"><strong>Team Sports</strong><span>Football, volleyball, basketball, handball and netball teams for boys and girls</span></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <div class="feature-text"><strong>Inter-School Competitions</strong><span>Regular participation in zone, county, regional and national sports competitions</span></div>
+          </div>
         </div>
         <a href="contact.html#inquiry" class="btn btn-primary">Join Our Teams</a>
       </div>
@@ -51,14 +74,38 @@
   <div class="container">
     <div class="section-header"><span class="section-tag">Our Sports</span><h2 class="section-title">Available Sports & Activities</h2><div class="divider"></div></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center">
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">⚽</div><strong>Football</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🏀</div><strong>Basketball</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🏐</div><strong>Volleyball</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🏃</div><strong>Athletics</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🏊</div><strong>Swimming</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🏸</div><strong>Badminton</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🤸</div><strong>Gymnastics</strong></div>
-      <div style="background:white;padding:24px;border-radius:14px;border:1.5px solid var(--border)"><div style="font-size:36px;margin-bottom:10px">🥊</div><strong>Martial Arts</strong></div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/><path d="M4.93 4.93l4.24 4.24"/><path d="M14.83 9.17l4.24-4.24"/></svg></div>
+        <strong>Football</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93 19.07 19.07"/></svg></div>
+        <strong>Basketball</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg></div>
+        <strong>Volleyball</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="m3 22 4-8 2 3 3-6 3 6 2-3 4 8"/></svg></div>
+        <strong>Athletics</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <strong>Swimming</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <strong>Badminton</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <strong>Gymnastics</strong>
+      </div>
+      <div style="background:white;padding:24px;border:1.5px solid var(--border);border-top:3px solid var(--primary)">
+        <div style="margin-bottom:12px;color:var(--primary)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <strong>Martial Arts</strong>
+      </div>
     </div>
   </div>
 </section>
