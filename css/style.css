@@ -734,3 +734,10 @@ ul { list-style: none; }
 .faq-item[open] summary::after{content:'－';color:var(--accent)}
 .faq-item p{padding:0 22px 18px 22px;color:var(--gray);font-size:14px;line-height:1.8;margin:0;border-top:1px solid var(--border)}
 .faq-item p a{color:var(--primary);text-decoration:underline}
+
+/* Boarding Philosophy */
+.boarding-philosophy{margin:0 0 40px}
+.boarding-philosophy-inner{border-left:4px solid var(--primary);background:var(--white);padding:28px 32px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.boarding-philosophy-inner h3{font-family:var(--font-head);font-size:1.15rem;color:var(--primary);font-weight:700;margin-bottom:10px}
+.boarding-philosophy-inner p{color:var(--gray);font-size:15px;line-height:1.8;margin:0}
+.boarding-cards-title{font-family:var(--font-head);font-size:1.2rem;color:var(--dark);font-weight:700;margin-bottom:24px;text-align:center}
